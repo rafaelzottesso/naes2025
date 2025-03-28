@@ -2,16 +2,51 @@
 
 {% load static %}
 
-{% block conteudo %}
-<h1>Sobre nós</h1>
-
-<p>
-    bl alajsdijsa d hsalkjd hsad hsadlkjhsa dlkjsa hdlkjsa gdsadsajhd kjsah gdkjsah gkjhsad gsakjhd gsakjhd gsadkjh gsajh gsadlkj gdsabl alajsdijsa d hsalkjd hsad hsadlkjhsa dlkjsa hdlkjsa gdsadsajhd kjsah gdkjsah gkjhsad gsakjhd gsakjhd gsadkjh gsajh gsadlkj gdsabl alajsdijsa d hsalkjd hsad hsadlkjhsa dlkjsa hdlkjsa gdsadsajhd kjsah gdkjsah gkjhsad gsakjhd gsakjhd gsadkjh gsajh gsadlkj gdsa
-</p>
-{% endblock conteudo %}
-
-{% block rodape %}
-<div class="col-auto">
-    <div class="small m-0">Desenvolvido por Rafael Zottesso</div>
+{% block header %}
+<div class="text-center">
+    <div class="fs-3 fw-light text-muted">Conheça um pouco mais sobre o projeto</div>
+    <h1 class="display-3 fw-bolder mb-5"><span class="text-gradient d-inline">Sobre o projeto</span></h1>
 </div>
-{% endblock rodape %}
+{% endblock header %}
+
+
+{% block conteudo %}
+
+<h2 class=" fw-bolder">
+    <span class="text-gradient d-inline">Descrição do projeto</span>
+</h2>
+<p class="lead fw-light mb-4">Falar do objetivo e funcionalidades</p>
+<p class="text-muted">
+    Aqui você vai descrever o seu software, considerando o objetivo geral e os objetivos específicos, podendo listá-los.
+</p>
+
+
+
+<h4 class="mt-5"><span class="text-gradient d-inline">Diagrama de Caso de Uso</span></h4>
+
+<div class="">
+    <p>Um <strong>Diagrama de Caso de Uso</strong> é uma ferramenta visual que descreve a funcionalidade de um sistema do ponto de vista do usuário (ou "ator"). Ele mostra:</p>
+    <ul>
+        <li><strong>Atores:</strong> Quem ou o quê interage com o sistema.</li>
+        <li><strong>Casos de Uso:</strong> As tarefas específicas que os atores podem realizar com o sistema.</li>
+        <li><strong>Relacionamentos:</strong> Como os casos de uso se relacionam entre si e com os atores (ex: inclusão, extensão, generalização).</li>
+    </ul>
+    <p>Em resumo, ele responde à pergunta: <strong>"O que o sistema faz?"</strong> e para quem. É útil para entender os requisitos do sistema e definir seu escopo.</p>
+</div>
+
+
+<h4 class="mt-5"><span class="text-gradient d-inline">Diagrama de Classes</span></h4>
+
+<div class="">
+    <p class="">Um <strong>Diagrama de Classes</strong> é um tipo de diagrama estrutural da UML (Linguagem Unificada de Modelagem) que descreve a estrutura estática de um sistema, mostrando suas classes, atributos, métodos e relacionamentos entre elas. Ele mostra:</p>
+    <ul>
+        <li><strong>Classes:</strong> Representam os objetos do sistema e seus dados.</li>
+        <li><strong>Atributos:</strong> As características dos objetos (ex: nome, idade).</li>
+        <li><strong>Métodos:</strong> As ações que os objetos podem realizar (ex: calcular, exibir).</li>
+        <li><strong>Relacionamentos:</strong> Como as classes se relacionam entre si (ex: associação, herança, agregação, composição).</li>
+    </ul>
+    <p>Em resumo, ele responde à pergunta: <strong>"Como o sistema é estruturado?"</strong>. É útil para modelar a arquitetura do software e facilitar a comunicação entre desenvolvedores.</p>
+</div>
+
+
+{% endblock conteudo %}
