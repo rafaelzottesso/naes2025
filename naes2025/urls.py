@@ -18,6 +18,11 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    
     path("admin/", admin.site.urls),
-    path("", include("paginasweb.urls"))
+    
+    # Incluir as urls dos apps
+    path("", include("paginasweb.urls")),
+    path("protocolo/", include("protocolos.urls")),
+
 ]

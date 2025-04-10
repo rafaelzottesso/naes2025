@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
+    # Ativar meus apps
     "paginasweb.apps.PaginaswebConfig",
+    "protocolos.apps.ProtocolosConfig",
+
 ]
 
 MIDDLEWARE = [
