@@ -52,13 +52,20 @@
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Dropdown
+                                    Cadastros
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="{% url "cadastrar-campus" %}">Campus</a></li>
+                                    <li><a class="dropdown-item" href="{% url "cadastrar-curso" %}">Curso</a></li>
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li><a class="dropdown-item" href="{% url "cadastrar-status" %}">Status</a></li>
+                                    <li><a class="dropdown-item" href="{% url "cadastrar-tipo-solicitacao" %}">Tipo de Solicitação</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="{% url "cadastrar-solicitacao" %}">Solicitação</a></li>
+                                    <li><a class="dropdown-item" href="{% url "cadastrar-historico" %}">Histórico</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="{% url "cadastrar-aluno" %}">Aluno</a></li>
+                                    <li><a class="dropdown-item" href="{% url "cadastrar-servidor" %}">Servidor</a></li>
                                 </ul>
                             </li>
                             

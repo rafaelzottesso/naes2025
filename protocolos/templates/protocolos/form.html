@@ -1,0 +1,48 @@
+{% extends "paginasweb/modelos/index.html" %}
+
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block header %}
+<div class="text-center">
+    <div class="fs-4 fw-light text-muted">
+        * Preencha os campos obrigatórios
+    </div>
+    <h1 class="display-5 fw-bolder mb-5">
+        <span class="text-gradient d-inline">
+            {{ titulo }}
+        </span>
+    </h1>
+</div>
+{% endblock header %}
+
+
+{% block conteudo %}
+
+<style>
+    form {
+        font-size: 120%;
+    }
+</style>
+
+<div class="row justify-content-center">
+
+    <div class="col-lg-6">
+
+        
+        <form action="" method="post">
+            
+            {% csrf_token %}
+            
+            {{ form|crispy }}
+            
+            <button type="submit" class="btn btn-primary">
+                Salvar
+            </button>
+            
+        </form>
+        
+    </div>
+</div>
+
+{% endblock conteudo %}
