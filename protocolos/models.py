@@ -11,7 +11,6 @@ class Campus(models.Model):
         return self.nome
     
     class Meta:
-        verbose_name_plural = "Campi"
         ordering = ["nome"]
 
 
@@ -63,19 +62,6 @@ class TipoSolicitacao(models.Model):
         ordering = ["descricao"]
 
 
-class Servidor(models.Model):
-    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
-    nome = models.CharField(max_length=255)
-    siape = models.CharField(max_length=50, unique=True)
-    email = models.EmailField()
-
-    def __str__(self):
-        return self.nome
-
-    class Meta:
-        ordering = ["nome"]
-
-
 class Aluno(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.CASCADE)
     nome = models.CharField(max_length=255)
@@ -87,12 +73,19 @@ class Aluno(models.Model):
     def __str__(self):
         return self.nome
 
-    class Meta:
-        ordering = ["nome"]
+
+class Servidor(models.Model):
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
+    nome = models.CharField(max_length=255)
+    siape = models.CharField(max_length=50, unique=True)
+    email = models.EmailField()
+
+    def __str__(self):
+        return self.nome
 
 
 class Solicitacao(models.Model):
-    solicitado_por = models.ForeignKey(User, on_delete=models.CASCADE)
+    solicitado_por = models.ForeignKey(Aluno, on_delete=models.CASCADE)
     curso = models.ForeignKey(Curso, on_delete=models.PROTECT)
     turma = models.CharField(max_length=30)
     tipo_solicitacao = models.ForeignKey(TipoSolicitacao, on_delete=models.PROTECT)
