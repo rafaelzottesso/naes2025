@@ -12,7 +12,7 @@ class CampusCreate(CreateView):
     fields = ["nome"]
     extra_context = {
         "titulo" : "Cadastro de Campus"
-    }
+    }        
 
 
 class CursoCreate(CreateView):

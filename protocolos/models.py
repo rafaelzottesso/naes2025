@@ -12,6 +12,7 @@ class Campus(models.Model):
     
     class Meta:
         ordering = ["nome"]
+        verbose_name_plural = "Campi"
 
 
 class Curso(models.Model):
@@ -40,7 +41,7 @@ class Status(models.Model):
 
 class TipoSolicitacao(models.Model):
 
-    descricao = models.CharField(max_length=100, verbose_name="descrição")
+    descricao = models.CharField(max_length=100, verbose_name="descrição", unique=True)
     prazo_externo = models.CharField(max_length=200)
     prazo_externo_dias = models.PositiveSmallIntegerField(
         help_text="Informe quantos dias úteis é o prazo de solicitação",
@@ -72,6 +73,9 @@ class Aluno(models.Model):
 
     def __str__(self):
         return self.nome
+    
+    class Meta:
+        ordering = ["nome"]
 
 
 class Servidor(models.Model):
@@ -82,6 +86,10 @@ class Servidor(models.Model):
 
     def __str__(self):
         return self.nome
+    
+    class Meta:
+        ordering = ["nome"]
+        verbose_name_plural = "Servidores"
 
 
 class Solicitacao(models.Model):
