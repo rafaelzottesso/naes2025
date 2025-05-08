@@ -1,0 +1,52 @@
+{% extends "paginasweb/modelos/index.html" %}
+
+{% load static %}
+
+{% block header %}
+<div class="text-center">
+    <h1 class="display-6 fw-bolder mb-4">
+        <span class="text-gradient d-inline">
+            Lista de Campi
+        </span>
+    </h1>
+
+    <a href="{% url "cadastrar-campus" %}" class="btn btn-primary">
+        + Adicionar Campus
+    </a>
+
+</div>
+{% endblock header %}
+
+
+{% block conteudo %}
+
+<div>
+
+    <table class="table table-striped">
+        <tr>
+            <th>Nome</th>
+            <th>Opções</th>
+        </tr>
+
+        {% for object in object_list %}
+        <tr>
+            <td>{{ object.nome }}</td>
+            <td>
+                <div class="btn-group" role="group" aria-label="Opções">
+                    <a href="{% url "editar-campus" object.pk %}" class="btn btn-sm btn-outline-primary">Editar</a>
+                    <a href="{% url "excluir-campus" object.pk %}" class="btn btn-sm btn-outline-danger">Excluir</a>
+                </div>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td>Nenhum registro encontrado.</td>
+            <td></td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</div>
+
+{% endblock conteudo %}

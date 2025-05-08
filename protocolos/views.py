@@ -1,4 +1,5 @@
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.list import ListView
 
 from django.urls import reverse_lazy
 
@@ -8,7 +9,7 @@ from .models import Campus, Curso, Status, TipoSolicitacao, Servidor, Aluno, Sol
 class CampusCreate(CreateView):
     template_name = "protocolos/form.html"
     model = Campus
-    success_url = reverse_lazy("index")
+    success_url = reverse_lazy("listar-campus")
     fields = ["nome"]
     extra_context = {
         "titulo" : "Cadastro de Campus"
@@ -97,7 +98,7 @@ class HistoricoCreate(CreateView):
 class CampusUpdate(UpdateView):
     template_name = "protocolos/form.html"
     model = Campus
-    success_url = reverse_lazy("index")
+    success_url = reverse_lazy("listar-campus")
     fields = ["nome"]
     extra_context = {
         "titulo" : "Atualizar dados do Campus"
@@ -186,7 +187,7 @@ class HistoricoUpdate(UpdateView):
 class CampusDelete(DeleteView):
     template_name = "protocolos/form-excluir.html"
     model = Campus
-    success_url = reverse_lazy("index")
+    success_url = reverse_lazy("listar-campus")
     extra_context = {
         "titulo" : "Excluir Campus",
     }
@@ -255,4 +256,9 @@ class HistoricoDelete(DeleteView):
     }
 
 
+###############################################################
 
+
+class CampusList(ListView):
+    template_name = "protocolos/listas/campus.html"
+    model = Campus
