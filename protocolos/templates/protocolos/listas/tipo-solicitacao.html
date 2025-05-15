@@ -1,0 +1,52 @@
+{% extends "paginasweb/modelos/index.html" %}
+{% load static %}
+{% block header %}
+<div class="text-center">
+    <h1 class="display-6 fw-bolder mb-4">
+        <span class="text-gradient d-inline">
+            Tipos de Solicitação
+        </span>
+    </h1>
+    <a href="{% url "cadastrar-tipo-solicitacao" %}" class="btn btn-primary">
+        + Adicionar Tipo de Solicitação
+    </a>
+</div>
+{% endblock header %}
+{% block conteudo %}
+<div>
+    <table class="table table-striped">
+        <tr>
+            <th>Descrição</th>
+            <th>Prazo externo</th>
+            <th>Dias</th>
+            <th>Prazo interno</th>
+            <th>Dias</th>
+            <th>Opções</th>
+        </tr>
+        {% for object in object_list %}
+        <tr>
+            <td>{{ object.descricao }}</td>
+            <td>{{ object.prazo_externo }}</td>
+            <td class="text-center">{{ object.prazo_externo_dias }}</td>
+            <td>{{ object.prazo_interno }}</td>
+            <td class="text-center">{{ object.prazo_interno_dias }}</td>
+            <td>
+                <div class="dropdown">
+                    <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Opções
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item link-primary" href="{% url "editar-tipo-solicitacao" object.pk %}">Editar</a></li>
+                        <li><a class="dropdown-item link-danger" href="{% url "excluir-tipo-solicitacao" object.pk %}">Excluir</a></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6">Nenhum registro encontrado.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock conteudo %}

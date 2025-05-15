@@ -1,57 +1,52 @@
 {% extends "paginasweb/modelos/index.html" %}
-
 {% load static %}
-
 {% block header %}
 <div class="text-center">
     <h1 class="display-6 fw-bolder mb-4">
         <span class="text-gradient d-inline">
-            Lista de Campi
+            Alunos
         </span>
     </h1>
-
-    <a href="{% url "cadastrar-campus" %}" class="btn btn-primary">
-        + Adicionar Campus
+    <a href="{% url "cadastrar-aluno" %}" class="btn btn-primary">
+        + Adicionar Aluno
     </a>
- 
 </div>
 {% endblock header %}
-
-
 {% block conteudo %}
-
 <div>
-
     <table class="table table-striped">
         <tr>
             <th>Nome</th>
+            <th>Matrícula</th>
+            <th>CPF</th>
+            <th>Email</th>
+            <th>Telefone</th>
             <th>Opções</th>
         </tr>
-
         {% for object in object_list %}
         <tr>
             <td>{{ object.nome }}</td>
+            <td>{{ object.matricula }}</td>
+            <td>{{ object.cpf }}</td>
+            <td>{{ object.email }}</td>
+            <td>{{ object.telefone }}</td>
             <td>
                 <div class="dropdown">
                     <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Opções
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item link-primary" href="{% url "editar-campus" object.pk %}">Editar</a></li>
-                        <li><a class="dropdown-item link-danger" href="{% url "excluir-campus" object.pk %}">Excluir</a></li>
+                        <li><a class="dropdown-item link-primary" href="{% url "editar-aluno" object.pk %}">Editar</a></li>
+                        <li><a class="dropdown-item link-danger" href="{% url "excluir-aluno" object.pk %}">Excluir</a></li>
                     </ul>
-                </div>  
+                </div>
             </td>
         </tr>
         {% empty %}
         <tr>
-            <td>Nenhum registro encontrado.</td>
-            <td></td>
+            <td colspan="6">Nenhum registro encontrado.</td>
         </tr>
         {% endfor %}
-
     </table>
-
 </div>
-
 {% endblock conteudo %}

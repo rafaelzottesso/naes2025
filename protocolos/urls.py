@@ -4,9 +4,11 @@ from django.urls import path
 from .views import CampusCreate,CursoCreate,StatusCreate,TipoSolicitacaoCreate,ServidorCreate,AlunoCreate,SolicitacaoCreate,HistoricoCreate
 from .views import CampusUpdate, CursoUpdate, StatusUpdate, TipoSolicitacaoUpdate, ServidorUpdate, AlunoUpdate, SolicitacaoUpdate, HistoricoUpdate
 from .views import CampusDelete, CursoDelete, StatusDelete, TipoSolicitacaoDelete, ServidorDelete, AlunoDelete, SolicitacaoDelete, HistoricoDelete
-from .views import CampusList
+from .views import CampusList, CursoList, StatusList, TipoSolicitacaoList, ServidorList, AlunoList, SolicitacaoList, HistoricoList
 
 urlpatterns = [
+
+    # CreateView ##########################################################
     path("cadastrar/campus/", CampusCreate.as_view(), name="cadastrar-campus"),
     path("cadastrar/curso/", CursoCreate.as_view(), name="cadastrar-curso"),
     path("cadastrar/status/", StatusCreate.as_view(), name="cadastrar-status"),
@@ -16,6 +18,7 @@ urlpatterns = [
     path("cadastrar/solicitacao/", SolicitacaoCreate.as_view(), name="cadastrar-solicitacao"),
     path("cadastrar/historico/", HistoricoCreate.as_view(), name="cadastrar-historico"),
 
+    # UpdateView ##########################################################
     path("editar/campus/<int:pk>/", CampusUpdate.as_view(), name="editar-campus"),
     path("editar/curso/<int:pk>/", CursoUpdate.as_view(), name="editar-curso"),
     path("editar/status/<int:pk>/", StatusUpdate.as_view(), name="editar-status"),
@@ -25,6 +28,7 @@ urlpatterns = [
     path("editar/solicitacao/<int:pk>/", SolicitacaoUpdate.as_view(), name="editar-solicitacao"),
     # path("editar/historico/<int:pk>/", HistoricoUpdate.as_view(), name="editar-historico"),
 
+    # DeleteView ##########################################################
     path("excluir/campus/<int:pk>/", CampusDelete.as_view(), name="excluir-campus"),
     path("excluir/curso/<int:pk>/", CursoDelete.as_view(), name="excluir-curso"),
     path("excluir/status/<int:pk>/", StatusDelete.as_view(), name="excluir-status"),
@@ -34,6 +38,15 @@ urlpatterns = [
     path("excluir/solicitacao/<int:pk>/", SolicitacaoDelete.as_view(), name="excluir-solicitacao"),
     path("excluir/historico/<int:pk>/", HistoricoDelete.as_view(), name="excluir-historico"),
 
+    # ListView ##########################################################
     path("listar/campi/", CampusList.as_view(), name="listar-campus"),
+    path("listar/cursos/", CursoList.as_view(), name="listar-curso"),
+    path("listar/status/", StatusList.as_view(), name="listar-status"),
+    path("listar/tipos-de-solicitacao/", TipoSolicitacaoList.as_view(), name="listar-tipo-solicitacao"),
+    path("listar/servidores/", ServidorList.as_view(), name="listar-servidor"),
+    path("listar/alunos/", AlunoList.as_view(), name="listar-aluno"),
+    path("listar/solicitacoes/", SolicitacaoList.as_view(), name="listar-solicitacao"),
+    path("listar/historicos/", HistoricoList.as_view(), name="listar-historico"),
+
 
 ]

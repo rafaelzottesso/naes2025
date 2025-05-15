@@ -1,57 +1,52 @@
 {% extends "paginasweb/modelos/index.html" %}
-
 {% load static %}
-
 {% block header %}
 <div class="text-center">
     <h1 class="display-6 fw-bolder mb-4">
         <span class="text-gradient d-inline">
-            Lista de Campi
+            Solicitações protocoladas
         </span>
     </h1>
-
-    <a href="{% url "cadastrar-campus" %}" class="btn btn-primary">
-        + Adicionar Campus
+    <a href="{% url "cadastrar-solicitacao" %}" class="btn btn-primary">
+        + Nova Solicitação
     </a>
- 
 </div>
 {% endblock header %}
-
-
 {% block conteudo %}
-
 <div>
-
     <table class="table table-striped">
         <tr>
-            <th>Nome</th>
+            <th>Solicitado por</th>
+            <th>Curso</th>
+            <th>Turma</th>
+            <th>Tipo de Solicitação</th>
+            <th>Data</th>
             <th>Opções</th>
         </tr>
-
         {% for object in object_list %}
         <tr>
-            <td>{{ object.nome }}</td>
+            <td>{{ object.solicitado_por.nome }}</td>
+            <td>{{ object.curso.nome }}</td>
+            <td>{{ object.turma }}</td>
+            <td>{{ object.tipo_solicitacao.descricao }}</td>
+            <td>{{ object.solicitado_em|date:"d/m/Y H:i" }}</td>
             <td>
                 <div class="dropdown">
                     <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Opções
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item link-primary" href="{% url "editar-campus" object.pk %}">Editar</a></li>
-                        <li><a class="dropdown-item link-danger" href="{% url "excluir-campus" object.pk %}">Excluir</a></li>
+                        <li><a class="dropdown-item link-primary" href="{% url "editar-solicitacao" object.pk %}">Editar</a></li>
+                        <li><a class="dropdown-item link-danger" href="{% url "excluir-solicitacao" object.pk %}">Excluir</a></li>
                     </ul>
-                </div>  
+                </div>
             </td>
         </tr>
         {% empty %}
         <tr>
-            <td>Nenhum registro encontrado.</td>
-            <td></td>
+            <td colspan="6">Nenhum registro encontrado.</td>
         </tr>
         {% endfor %}
-
     </table>
-
 </div>
-
 {% endblock conteudo %}
