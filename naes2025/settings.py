@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # Ativar meus apps
     "paginasweb.apps.PaginaswebConfig",
     "protocolos.apps.ProtocolosConfig",
+    "usuario.apps.UsuarioConfig",
 
     # Outros complementos/apps
     "crispy_forms",
@@ -133,5 +134,12 @@ STATICFILES_DIRS = [ BASE_DIR / "static" ]
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Formatação do CRispy Forms
+
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+# Configuração de autenticação
+
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'
+LOGIN_URL = 'login'

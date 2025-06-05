@@ -24,5 +24,6 @@ urlpatterns = [
     # Incluir as urls dos apps
     path("", include("paginasweb.urls")),
     path("protocolo/", include("protocolos.urls")),
+    path("", include("usuario.urls")),
 
 ]
