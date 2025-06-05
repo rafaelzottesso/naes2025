@@ -58,6 +58,14 @@
                             {% if request.user.is_authenticated %}
                             <!-- Verifica se o visitante está autenticado -->
 
+                            <li class="nav-item">
+                                <a class="nav-link link-success" href="{% url "cadastrar-solicitacao" %}">Nova solicitação</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url "listar-solicitacao" %}">Minhas solicitações</a>
+                            </li>
+
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Administração
@@ -76,22 +84,19 @@
                                     <li><a class="dropdown-item" href="{% url "listar-servidor" %}">Servidor</a></li>
                                 </ul>
                             </li>
-                            
 
                             <li class="nav-item">
-                                <a class="nav-link link-success" href="{% url "cadastrar-solicitacao" %}">Nova solicitação</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url "listar-solicitacao" %}">Minhas solicitações</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url "alterar-senha" %}">Alterar senha</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url "logout" %}">Logout</a>
+                                <div class="btn-group mt-1">
+                                    <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                      {{ request.user }}
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                      <li><a class="dropdown-item" href="#">Outra coisa</a></li>
+                                      <li><a class="dropdown-item" href="{% url "alterar-senha" %}">Alterar senha</a></li>
+                                      <li><hr class="dropdown-divider"></li>
+                                      <li><a class="dropdown-item" href="{% url "logout" %}">Logout</a></li>
+                                    </ul>
+                                </div>
                             </li>
 
                             {% else %}
