@@ -11554,13 +11554,13 @@ html {
   height: 100%;
 }
 
-.bg-gradient-primary-to-secondary {
+.bg-gradient-primary-to-secondary { 
   background: #1e30f3;
-  background: linear-gradient(135deg, #1e30f3 0%, #e21e80 100%);
+  background: linear-gradient(135deg, #207E30 0%, #45e560 100%);
 }
 
 .text-gradient {
-  background: -webkit-linear-gradient(315deg, #1e30f3 0%, #e21e80 100%);
+  background: -webkit-linear-gradient(315deg, #207E30 0%, #45e560 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

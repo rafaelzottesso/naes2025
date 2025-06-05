@@ -36,7 +36,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 fixed-top shadow-sm">
                 <div class="container px-5">
                     <a class="navbar-brand" href="{% url 'index' %}">
-                        <span class="fw-bolder text-primary">NAES 2025</span>
+                        <span class="fw-bolder text-success">NAES 2025</span>
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -49,6 +49,14 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'sobre' %}">Sobre</a>
                             </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url "contato" %}">Contato</a>
+                            </li>
+
+
+                            {% if request.user.is_authenticated %}
+                            <!-- Verifica se o visitante está autenticado -->
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -79,8 +87,24 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url "contato" %}">Contato</a>
+                                <a class="nav-link" href="{% url "alterar-senha" %}">Alterar senha</a>
                             </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url "logout" %}">Logout</a>
+                            </li>
+
+                            {% else %}
+
+                            <li class="m-1">
+                                <a class="btn btn-sm btn-outline-primary" href="">Registrar</a>
+                            </li>
+
+                            <li class="m-1">
+                                <a class="btn btn-sm btn-outline-success" href="{% url "login" %}">Entrar</a>
+                            </li>
+
+                            {% endif %}
 
                         </ul>
                     </div>

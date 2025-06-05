@@ -5,8 +5,12 @@ from django.urls import reverse_lazy
 
 from .models import Campus, Curso, Status, TipoSolicitacao, Servidor, Aluno, Solicitacao, Historico
 
+# View para controle de autenticação e acesso às páginas
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
 # Create your views here.
-class CampusCreate(CreateView):
+class CampusCreate(LoginRequiredMixin, CreateView):
     template_name = "protocolos/form.html"
     model = Campus
     success_url = reverse_lazy("listar-campus")
@@ -16,7 +20,7 @@ class CampusCreate(CreateView):
     }        
 
 
-class CursoCreate(CreateView):
+class CursoCreate(LoginRequiredMixin, CreateView):
     template_name = "protocolos/form.html"
     model = Curso
     success_url = reverse_lazy("listar-curso")
@@ -26,7 +30,7 @@ class CursoCreate(CreateView):
     }
 
 
-class StatusCreate(CreateView):
+class StatusCreate(LoginRequiredMixin, CreateView):
     template_name = "protocolos/form.html"
     model = Status
     success_url = reverse_lazy("listar-status")
@@ -36,7 +40,7 @@ class StatusCreate(CreateView):
     }
 
 
-class TipoSolicitacaoCreate(CreateView):
+class TipoSolicitacaoCreate(LoginRequiredMixin, CreateView):
     template_name = "protocolos/form.html"
     model = TipoSolicitacao
     success_url = reverse_lazy("listar-tipo-solicitacao")
@@ -52,7 +56,7 @@ class TipoSolicitacaoCreate(CreateView):
     }
 
 
-class ServidorCreate(CreateView):
+class ServidorCreate(LoginRequiredMixin, CreateView):
     template_name = "protocolos/form.html"
     model = Servidor
     success_url = reverse_lazy("listar-servidor")
@@ -62,7 +66,7 @@ class ServidorCreate(CreateView):
     }
 
 
-class AlunoCreate(CreateView):
+class AlunoCreate(LoginRequiredMixin, CreateView):
     template_name = "protocolos/form.html"
     model = Aluno
     success_url = reverse_lazy("listar-aluno")
@@ -72,7 +76,7 @@ class AlunoCreate(CreateView):
     }
 
 
-class SolicitacaoCreate(CreateView):
+class SolicitacaoCreate(LoginRequiredMixin, CreateView):
     template_name = "protocolos/form.html"
     model = Solicitacao
     success_url = reverse_lazy("listar-solicitacao")
@@ -82,7 +86,7 @@ class SolicitacaoCreate(CreateView):
     }
 
 
-class HistoricoCreate(CreateView):
+class HistoricoCreate(LoginRequiredMixin, CreateView):
     template_name = "protocolos/form.html"
     model = Historico
     success_url = reverse_lazy("listar-historico")
@@ -95,7 +99,7 @@ class HistoricoCreate(CreateView):
 ###############################################################
 
 
-class CampusUpdate(UpdateView):
+class CampusUpdate(LoginRequiredMixin, UpdateView):
     template_name = "protocolos/form.html"
     model = Campus
     success_url = reverse_lazy("listar-campus")
@@ -105,7 +109,7 @@ class CampusUpdate(UpdateView):
     } 
 
 
-class CursoUpdate(UpdateView):
+class CursoUpdate(LoginRequiredMixin, UpdateView):
     template_name = "protocolos/form.html"
     model = Curso
     success_url = reverse_lazy("listar-curso")
@@ -115,7 +119,7 @@ class CursoUpdate(UpdateView):
     }
 
 
-class StatusUpdate(UpdateView):
+class StatusUpdate(LoginRequiredMixin, UpdateView):
     template_name = "protocolos/form.html"
     model = Status
     success_url = reverse_lazy("listar-status")
@@ -125,7 +129,7 @@ class StatusUpdate(UpdateView):
     }
 
 
-class TipoSolicitacaoUpdate(UpdateView):
+class TipoSolicitacaoUpdate(LoginRequiredMixin, UpdateView):
     template_name = "protocolos/form.html"
     model = TipoSolicitacao
     success_url = reverse_lazy("listar-tipo-solicitacao")
@@ -141,7 +145,7 @@ class TipoSolicitacaoUpdate(UpdateView):
     }
 
 
-class ServidorUpdate(UpdateView):
+class ServidorUpdate(LoginRequiredMixin, UpdateView):
     template_name = "protocolos/form.html"
     model = Servidor
     success_url = reverse_lazy("listar-servidor")
@@ -151,7 +155,7 @@ class ServidorUpdate(UpdateView):
     }
 
 
-class AlunoUpdate(UpdateView):
+class AlunoUpdate(LoginRequiredMixin, UpdateView):
     template_name = "protocolos/form.html"
     model = Aluno
     success_url = reverse_lazy("listar-aluno")
@@ -161,7 +165,7 @@ class AlunoUpdate(UpdateView):
     }
 
 
-class SolicitacaoUpdate(UpdateView):
+class SolicitacaoUpdate(LoginRequiredMixin, UpdateView):
     template_name = "protocolos/form.html"
     model = Solicitacao
     success_url = reverse_lazy("listar-solicitacao")
@@ -171,7 +175,7 @@ class SolicitacaoUpdate(UpdateView):
     }
 
 
-class HistoricoUpdate(UpdateView):
+class HistoricoUpdate(LoginRequiredMixin, UpdateView):
     template_name = "protocolos/form.html"
     model = Historico
     success_url = reverse_lazy("listar-historico")
@@ -184,7 +188,7 @@ class HistoricoUpdate(UpdateView):
 ###############################################################
 
 
-class CampusDelete(DeleteView):
+class CampusDelete(LoginRequiredMixin, DeleteView):
     template_name = "protocolos/form-excluir.html"
     model = Campus
     success_url = reverse_lazy("listar-campus")
@@ -193,7 +197,7 @@ class CampusDelete(DeleteView):
     }
 
 
-class CursoDelete(DeleteView):
+class CursoDelete(LoginRequiredMixin, DeleteView):
     template_name = "protocolos/form-excluir.html"
     model = Curso
     success_url = reverse_lazy("listar-curso")
@@ -202,7 +206,7 @@ class CursoDelete(DeleteView):
     }
 
 
-class StatusDelete(DeleteView):
+class StatusDelete(LoginRequiredMixin, DeleteView):
     template_name = "protocolos/form-excluir.html"
     model = Status
     success_url = reverse_lazy("listar-status")
@@ -211,7 +215,7 @@ class StatusDelete(DeleteView):
     }
 
 
-class TipoSolicitacaoDelete(DeleteView):
+class TipoSolicitacaoDelete(LoginRequiredMixin, DeleteView):
     template_name = "protocolos/form-excluir.html"
     model = TipoSolicitacao
     success_url = reverse_lazy("listar-tipo-solicitacao")
@@ -220,7 +224,7 @@ class TipoSolicitacaoDelete(DeleteView):
     }
 
 
-class ServidorDelete(DeleteView):
+class ServidorDelete(LoginRequiredMixin, DeleteView):
     template_name = "protocolos/form-excluir.html"
     model = Servidor
     success_url = reverse_lazy("listar-servidor")
@@ -229,7 +233,7 @@ class ServidorDelete(DeleteView):
     }
 
 
-class AlunoDelete(DeleteView):
+class AlunoDelete(LoginRequiredMixin, DeleteView):
     template_name = "protocolos/form-excluir.html"
     model = Aluno
     success_url = reverse_lazy("listar-aluno")
@@ -238,7 +242,7 @@ class AlunoDelete(DeleteView):
     }
 
 
-class SolicitacaoDelete(DeleteView):
+class SolicitacaoDelete(LoginRequiredMixin, DeleteView):
     template_name = "protocolos/form-excluir.html"
     model = Solicitacao
     success_url = reverse_lazy("listar-solicitacao")
@@ -247,7 +251,7 @@ class SolicitacaoDelete(DeleteView):
     }
 
 
-class HistoricoDelete(DeleteView):
+class HistoricoDelete(LoginRequiredMixin, DeleteView):
     template_name = "protocolos/form-excluir.html"
     model = Historico
     success_url = reverse_lazy("listar-historico")
@@ -259,43 +263,43 @@ class HistoricoDelete(DeleteView):
 ###############################################################
 
 
-class CampusList(ListView):
+class CampusList(LoginRequiredMixin, ListView):
     template_name = "protocolos/listas/campus.html"
     model = Campus
 
 
-class CursoList(ListView):
+class CursoList(LoginRequiredMixin, ListView):
     template_name = "protocolos/listas/curso.html"
     model = Curso
     ordering = ["campus", "nome"]
 
 
-class StatusList(ListView):
+class StatusList(LoginRequiredMixin, ListView):
     template_name = "protocolos/listas/status.html"
     model = Status
     ordering = ["ordem"]
 
 
-class TipoSolicitacaoList(ListView):
+class TipoSolicitacaoList(LoginRequiredMixin, ListView):
     template_name = "protocolos/listas/tipo-solicitacao.html"
     model = TipoSolicitacao
 
 
-class ServidorList(ListView):
+class ServidorList(LoginRequiredMixin, ListView):
     template_name = "protocolos/listas/servidor.html"
     model = Servidor
 
 
-class AlunoList(ListView):
+class AlunoList(LoginRequiredMixin, ListView):
     template_name = "protocolos/listas/aluno.html"
     model = Aluno
 
 
-class SolicitacaoList(ListView):
+class SolicitacaoList(LoginRequiredMixin, ListView):
     template_name = "protocolos/listas/solicitacao.html"
     model = Solicitacao
 
 
-class HistoricoList(ListView):
+class HistoricoList(LoginRequiredMixin, ListView):
     template_name = "protocolos/listas/historico.html"
     model = Historico
