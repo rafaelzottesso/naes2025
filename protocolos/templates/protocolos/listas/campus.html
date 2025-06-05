@@ -5,14 +5,13 @@
 {% block header %}
 <div class="text-center">
     <h1 class="display-6 fw-bolder mb-4">
-        <span class="text-gradient d-inline">
+        <span class="text-success d-inline">
             Lista de Campi
         </span>
+        <a href="{% url "cadastrar-campus" %}" class="btn btn-outline-success float-end">
+            + Adicionar
+        </a>
     </h1>
-
-    <a href="{% url "cadastrar-campus" %}" class="btn btn-primary">
-        + Adicionar Campus
-    </a>
  
 </div>
 {% endblock header %}

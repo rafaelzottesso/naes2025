@@ -3,13 +3,13 @@
 {% block header %}
 <div class="text-center">
     <h1 class="display-6 fw-bolder mb-4">
-        <span class="text-gradient d-inline">
+        <span class="text-success d-inline">
             Alunos
         </span>
+        <a href="{% url "cadastrar-aluno" %}" class="btn btn-outline-success float-end">
+            + Adicionar
+        </a>
     </h1>
-    <a href="{% url "cadastrar-aluno" %}" class="btn btn-primary">
-        + Adicionar Aluno
-    </a>
 </div>
 {% endblock header %}
 {% block conteudo %}

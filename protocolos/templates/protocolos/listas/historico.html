@@ -3,13 +3,13 @@
 {% block header %}
 <div class="text-center">
     <h1 class="display-6 fw-bolder mb-4">
-        <span class="text-gradient d-inline">
+        <span class="text-success d-inline">
             Históricos das Solicitações
         </span>
+        <a href="{% url "cadastrar-historico" %}" class="btn btn-outline-success float-end">
+            + Adicionar
+        </a>
     </h1>
-    <a href="{% url "cadastrar-historico" %}" class="btn btn-primary">
-        + Adicionar Histórico
-    </a>
 </div>
 {% endblock header %}
 {% block conteudo %}
