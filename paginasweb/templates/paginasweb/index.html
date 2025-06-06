@@ -3,15 +3,54 @@
 {% load static %}
 
 
+{% block header %}
+<!-- Header text content-->
+<div class="text-center">
+    <div class="badge bg-gradient-primary-to-secondary text-white mb-4">
+        <div class="text-uppercase">
+            IFPR Paranavaí &middot; Secretaria Acadêmica
+        </div>
+    </div>
+    <div class="fs-3 fw-light text-muted">Faça sua solicitação</div>
+    <h1 class="display-3 fw-bolder mb-5"><span class="text-gradient d-inline">Protocolo Online</span></h1>
+    
+    <div class="d-grid gap-3 d-sm-flex justify-content-center mb-3">
+
+        {% if request.user.is_authenticated %}
+
+        <a class="btn btn-success btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="{% url "cadastrar-solicitacao" %}">Nova solicitação</a>
+        <a class="btn btn-outline-success btn-lg px-5 py-3 fs-6 fw-bolder" href="{% url "listar-solicitacao" %}">Minhas solicitações</a>
+
+        
+        {% else %}
+        
+        <a class="btn btn-success btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="{% url "cadastrar-solicitacao" %}">Entrar</a>
+        <a class="btn btn-outline-success btn-lg px-5 py-3 fs-6 fw-bolder" href="{% url "listar-solicitacao" %}">Registrar-se</a>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock header %}
+
+
 {% block conteudo %}
 
 <d class="row">
 
     <div class="col-lg-6">
         <div class="text-center my-3">
-            <h2 class="display-5 fw-bolder"><span class="text-gradient d-inline">About Me</span></h2>
-            <p class="lead fw-light mb-4">My name is Start Bootstrap and I help brands grow.</p>
-            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit dolorum itaque qui unde quisquam consequatur autem. Eveniet quasi nobis aliquid cumque officiis sed rem iure ipsa! Praesentium ratione atque dolorem?</p>
+            <h2 class="display-5 fw-bolder"><span class="text-gradient d-inline">O que é?</span></h2>
+            <p class="lead fw-light mb-4">Para que serve o Protocolo Online?</p>
+            <p class="text-muted">
+                Para toda e qualquer solicitação, o requerente deve protocolar requerimento junto à
+                 Unidade de Protocolo da Secretaria Acadêmica, através de Protocolo Online. 
+                 Os protocolos de requerimentos serão encaminhados aos devidos setores competentes 
+                 para a emissão de resultados. Os resultados serão enviados ao requerente por e-mail, 
+                 dentro do prazo previsto para cada solicitação.
+            </p>
             <div class="d-flex justify-content-center fs-2 gap-4">
                 
             </div>
