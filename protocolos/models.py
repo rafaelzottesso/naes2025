@@ -93,7 +93,7 @@ class Servidor(models.Model):
 
 
 class Solicitacao(models.Model):
-    solicitado_por = models.ForeignKey(Aluno, on_delete=models.CASCADE)
+    solicitado_por = models.ForeignKey(User, on_delete=models.CASCADE)
     curso = models.ForeignKey(Curso, on_delete=models.PROTECT)
     turma = models.CharField(max_length=30)
     tipo_solicitacao = models.ForeignKey(TipoSolicitacao, on_delete=models.PROTECT)
