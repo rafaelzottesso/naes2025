@@ -24,7 +24,7 @@
         </tr>
         {% for object in object_list %}
         <tr>
-            <td>{{ object.solicitacao }}</td>
+            <td>#{{ object.solicitacao.pk }} - {{object.solicitacao.tipo_solicitacao}}</td>
             <td>{{ object.status.nome }}</td>
             <td>{{ object.gerado_em|date:"d/m/Y H:i" }}</td>
             <td>{{ object.gerado_por }}</td>
@@ -34,7 +34,6 @@
                         Opções
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item link-primary" href="{% url "editar-historico" object.pk %}">Editar</a></li>
                         <li><a class="dropdown-item link-danger" href="{% url "excluir-historico" object.pk %}">Excluir</a></li>
                     </ul>
                 </div>

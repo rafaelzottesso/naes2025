@@ -25,7 +25,7 @@
         </tr>
         {% for object in object_list %}
         <tr>
-            <td>{{ object.solicitado_por.nome }}</td>
+            <td>{{ object.solicitado_por }}</td>
             <td>{{ object.curso.nome }}</td>
             <td>{{ object.turma }}</td>
             <td>{{ object.tipo_solicitacao.descricao }}</td>

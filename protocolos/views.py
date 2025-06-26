@@ -80,10 +80,55 @@ class SolicitacaoCreate(LoginRequiredMixin, CreateView):
     template_name = "protocolos/form.html"
     model = Solicitacao
     success_url = reverse_lazy("listar-solicitacao")
-    fields = ["solicitado_por", "curso", "turma", "tipo_solicitacao", "justificativa", "anexo"]
+    fields = [ "curso", "turma", "tipo_solicitacao", "justificativa", "anexo"]
     extra_context = {
         "titulo": "Cadastro de Solicitação"
     }
+
+    def form_valid(self, form):    
+        
+        # Define o usuário logado no "campo do form" (como atributo)
+        form.instance.solicitado_por = self.request.user
+
+        # Manipula os dados do formulário ou que serão salvos no banco
+        # Sempre manipulando: form.instance.atributo
+
+        # Executa as validações, faz insert no banco e cria o objeto
+        # retorna um redirecionamento para a página de sucesso 
+        url = super().form_valid(form)
+
+        # Agora já podemos acessar o objeto do tipo dessa classe (Solicitação)
+        # O objeto criado está disponível em: self.object
+
+        # Na minha regra de negócio, preciso criar um histórico pra essa solicitação
+
+        # Tratamento de erro para evitar que alguma solicitação fique cadastrada sem histórico
+        try:
+            # Busca o objeto status que tem a ordem igual a 1
+            status_aberto = Status.objects.get(ordem=1)
+            # Cria um objeto solicitação (que é inserido no banco ao criar o objeto)
+            historico = Historico.objects.create(
+                solicitacao=self.object,
+                status=status_aberto,
+                gerado_por=self.request.user
+            )
+        except :
+            # Caso de algum erro, deleta a solicitação que foi criada
+            self.object.delete()
+            # Adiciona um erro ao formulário
+            form.add_error("", "Houve um problema, tente novamente!")
+            # Retorna ao formulário com o erro adicionado
+            return self.form_invalid(form)
+
+        # Se prcisar alterar algum atributo do objeto, deve salvar o objeto para que seja feito um Update no banco
+        # self.object.justificativa += "XXXX"
+        # Salvar o objeto
+        # self.object.save()
+
+        # Se tudo deu certo, retorna o redirecionamento de sucesso
+        return url
+    
+
 
 
 class HistoricoCreate(LoginRequiredMixin, CreateView):
