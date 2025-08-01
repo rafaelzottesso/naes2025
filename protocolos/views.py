@@ -60,7 +60,7 @@ class ServidorCreate(LoginRequiredMixin, CreateView):
     template_name = "protocolos/form.html"
     model = Servidor
     success_url = reverse_lazy("listar-servidor")
-    fields = ["nome", "siape", "email"]
+    fields = ["nome", "siape"]
     extra_context = {
         "titulo": "Cadastro de Servidor"
     }
@@ -70,7 +70,7 @@ class AlunoCreate(LoginRequiredMixin, CreateView):
     template_name = "protocolos/form.html"
     model = Aluno
     success_url = reverse_lazy("listar-aluno")
-    fields = ["nome", "matricula", "cpf", "email", "telefone"]
+    fields = ["nome", "matricula", "cpf", "telefone"]
     extra_context = {
         "titulo": "Cadastro de Aluno"
     }
@@ -194,7 +194,7 @@ class ServidorUpdate(LoginRequiredMixin, UpdateView):
     template_name = "protocolos/form.html"
     model = Servidor
     success_url = reverse_lazy("listar-servidor")
-    fields = ["nome", "siape", "email"]
+    fields = ["nome", "siape"]
     extra_context = {
         "titulo": "Atualização de Servidor"
     }
@@ -204,7 +204,7 @@ class AlunoUpdate(LoginRequiredMixin, UpdateView):
     template_name = "protocolos/form.html"
     model = Aluno
     success_url = reverse_lazy("listar-aluno")
-    fields = ["nome", "matricula", "cpf", "email", "telefone"]
+    fields = ["nome", "matricula", "cpf", "telefone"]
     extra_context = {
         "titulo": "Atualização de Aluno"
     }

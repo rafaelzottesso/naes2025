@@ -64,11 +64,10 @@ class TipoSolicitacao(models.Model):
 
 
 class Aluno(models.Model):
-    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE, related_name="aluno")
     nome = models.CharField(max_length=255)
     matricula = models.CharField(max_length=50, unique=True)
     cpf = models.CharField(max_length=14, unique=True) 
-    email = models.EmailField()
     telefone = models.CharField(max_length=20)
 
     def __str__(self):
@@ -79,10 +78,9 @@ class Aluno(models.Model):
 
 
 class Servidor(models.Model):
-    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE, related_name="servidor")
     nome = models.CharField(max_length=255)
     siape = models.CharField(max_length=50, unique=True)
-    email = models.EmailField()
 
     def __str__(self):
         return self.nome
@@ -93,7 +91,7 @@ class Servidor(models.Model):
 
 
 class Solicitacao(models.Model):
-    solicitado_por = models.ForeignKey(User, on_delete=models.CASCADE)
+    solicitado_por = models.ForeignKey(Aluno, on_delete=models.CASCADE)
     curso = models.ForeignKey(Curso, on_delete=models.PROTECT)
     turma = models.CharField(max_length=30)
     tipo_solicitacao = models.ForeignKey(TipoSolicitacao, on_delete=models.PROTECT)
