@@ -138,7 +138,7 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATICFILES_DIRS = [ BASE_DIR / "static" ]
-STATIC_ROOT = 'static_gcloud/'
+STATIC_ROOT = BASE_DIR / 'static_gcloud/'
 
 
 # Default primary key field type
