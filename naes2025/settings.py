@@ -83,23 +83,23 @@ WSGI_APPLICATION = "naes2025.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#     }
-# }
-
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "postgres",
-        "USER": "postgres.vmhbgjizdjurxzubqpns",
-        "PASSWORD": "@Naes2025",
-        "HOST": "aws-0-sa-east-1.pooler.supabase.com",
-        "PORT": "5432",
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "postgres",
+#         "USER": "postgres.vmhbgjizdjurxzubqpns",
+#         "PASSWORD": "@Naes2025",
+#         "HOST": "aws-0-sa-east-1.pooler.supabase.com",
+#         "PORT": "5432",
+#     }
+# }
 
 
 # Password validation
