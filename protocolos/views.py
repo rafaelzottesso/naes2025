@@ -88,7 +88,7 @@ class SolicitacaoCreate(LoginRequiredMixin, CreateView):
     def form_valid(self, form):    
         
         # Define o usuário logado no "campo do form" (como atributo)
-        form.instance.solicitado_por = self.request.user
+        form.instance.solicitado_por = self.request.user.aluno
 
         # Manipula os dados do formulário ou que serão salvos no banco
         # Sempre manipulando: form.instance.atributo
