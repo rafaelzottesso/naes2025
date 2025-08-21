@@ -1,0 +1,158 @@
+[
+    {
+      "model": "protocolos.tiposolicitacao",
+      "pk": 1,
+      "fields": {
+        "descricao": "Rematrícula fora do prazo",
+        "prazo_externo": "A qualquer tempo, mediante justificativa",
+        "prazo_externo_dias": 0,
+        "prazo_interno": "05 dias úteis",
+        "prazo_interno_dias": 5
+      }
+    },
+    {
+      "model": "protocolos.tiposolicitacao",
+      "pk": 2,
+      "fields": {
+        "descricao": "Readmissão de aluno no curso (somente para cursos superiores)",
+        "prazo_externo": "A qualquer tempo, mediante justificativa",
+        "prazo_externo_dias": 0,
+        "prazo_interno": "Até 10 dias úteis (comissão possui 5 dias para expedição de resultado)",
+        "prazo_interno_dias": 10
+      }
+    },
+    {
+      "model": "protocolos.tiposolicitacao",
+      "pk": 3,
+      "fields": {
+        "descricao": "Transferência para outra Instituição de Ensino",
+        "prazo_externo": "A qualquer tempo, apresentando Declaração de existência de vaga e não possuindo pendências com setores de ensino.",
+        "prazo_externo_dias": 0,
+        "prazo_interno": "Até 3 dias úteis para emissão de guia de transferência, boletim e histórico escolar.",
+        "prazo_interno_dias": 3
+      }
+    },
+    {
+      "model": "protocolos.tiposolicitacao",
+      "pk": 4,
+      "fields": {
+        "descricao": "Trancamento de Matrícula",
+        "prazo_externo": "Conforme prazo estabelecido em calendário acadêmico. (somente após o 2º período letivo do curso).",
+        "prazo_externo_dias": 0,
+        "prazo_interno": "Até 7 dias",
+        "prazo_interno_dias": 7
+      }
+    },
+    {
+      "model": "protocolos.tiposolicitacao",
+      "pk": 5,
+      "fields": {
+        "descricao": "Recurso para desconsiderar pedido de cancelamento de matrícula (por abandono)",
+        "prazo_externo": "03 dias úteis após a publicação do edital de cancelamento por abandono",
+        "prazo_externo_dias": 3,
+        "prazo_interno": "Direção Geral: 03 dias úteis",
+        "prazo_interno_dias": 3
+      }
+    },
+    {
+      "model": "protocolos.tiposolicitacao",
+      "pk": 6,
+      "fields": {
+        "descricao": "Aproveitamento de Estudos Anteriores",
+        "prazo_externo": "Prazo estabelecido em calendário acadêmico",
+        "prazo_externo_dias": 0,
+        "prazo_interno": "Até 15 dias úteis (comissão possui 10 dias para expedição de resultado)",
+        "prazo_interno_dias": 15
+      }
+    },
+    {
+      "model": "protocolos.tiposolicitacao",
+      "pk": 7,
+      "fields": {
+        "descricao": "Certificação de Conhecimentos anteriores",
+        "prazo_externo": "Conforme calendário acadêmico",
+        "prazo_externo_dias": 0,
+        "prazo_interno": "Até 20 dias úteis (comissão possui 15 dias para expedição de resultado)",
+        "prazo_interno_dias": 20
+      }
+    },
+    {
+      "model": "protocolos.tiposolicitacao",
+      "pk": 8,
+      "fields": {
+        "descricao": "Declaração ou Atestado de Matrícula",
+        "prazo_externo": "A qualquer tempo",
+        "prazo_externo_dias": 0,
+        "prazo_interno": "Secretaria Acadêmica: 02 dias úteis",
+        "prazo_interno_dias": 2
+      }
+    },
+    {
+      "model": "protocolos.tiposolicitacao",
+      "pk": 9,
+      "fields": {
+        "descricao": "Histórico Escolar",
+        "prazo_externo": "A qualquer tempo",
+        "prazo_externo_dias": 0,
+        "prazo_interno": "Secretaria Acadêmica: 02 dias úteis",
+        "prazo_interno_dias": 2
+      }
+    },
+    {
+      "model": "protocolos.tiposolicitacao",
+      "pk": 10,
+      "fields": {
+        "descricao": "Justificativa de falta",
+        "prazo_externo": "03 dias úteis após a emissão do documento comprobatório",
+        "prazo_externo_dias": 3,
+        "prazo_interno": "2 dias úteis",
+        "prazo_interno_dias": 2
+      }
+    },
+    {
+      "model": "protocolos.tiposolicitacao",
+      "pk": 11,
+      "fields": {
+        "descricao": "Regime Domiciliar de Estudos",
+        "prazo_externo": "03 dias úteis após a emissão do documento comprobatório. (para afastamento com mais de 15 dias úteis)",
+        "prazo_externo_dias": 3,
+        "prazo_interno": "5 dias úteis",
+        "prazo_interno_dias": 5
+      }
+    },
+    {
+      "model": "protocolos.tiposolicitacao",
+      "pk": 12,
+      "fields": {
+        "descricao": "Reposição de Avaliação",
+        "prazo_externo": "03 dias úteis após a emissão do documento comprobatório",
+        "prazo_externo_dias": 3,
+        "prazo_interno": "Até 7 dias úteis",
+        "prazo_interno_dias": 7
+      }
+    },
+    {
+      "model": "protocolos.tiposolicitacao",
+      "pk": 13,
+      "fields": {
+        "descricao": "Cancelamento de registro acadêmico",
+        "prazo_externo": "A qualquer tempo, não havendo pendência com os setores de ensino",
+        "prazo_externo_dias": 0,
+        "prazo_interno": "Até 7 dias úteis",
+        "prazo_interno_dias": 7
+      }
+    },
+    {
+      "model": "protocolos.tiposolicitacao",
+      "pk": 14,
+      "fields": {
+        "descricao": "Revisão de Conceito/frequência",
+        "prazo_externo": "Conforme prazo em calendário",
+        "prazo_externo_dias": 0,
+        "prazo_interno": "Cursos técnicos: conforme calendário acadêmico. Cursos Superiores/subsequente: comissão possui até 30 dias para emissão de resultado.",
+        "prazo_interno_dias": 30
+      }
+    }
+]
+   
+  

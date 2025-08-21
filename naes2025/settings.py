@@ -90,16 +90,16 @@ DATABASES = {
     }
 }
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": "postgres",
-#         "USER": "postgres.vmhbgjizdjurxzubqpns",
-#         "PASSWORD": "@Naes2025",
-#         "HOST": "aws-0-sa-east-1.pooler.supabase.com",
-#         "PORT": "5432",
-#     }
-# }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "postgres",
+        "USER": "postgres.duhrgrkwrmvhkfxbleje",
+        "PASSWORD": "ISQiqfVd1QGknXXB",
+        "HOST": "aws-1-us-east-1.pooler.supabase.com",
+        "PORT": "5432",
+    }
+}
 
 
 # Password validation

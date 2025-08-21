@@ -1,0 +1,242 @@
+[
+    {
+      "model": "protocolos.campus",
+      "pk": 1,
+      "fields": {
+        "nome": "Paranavaí"
+      }
+    },
+    {
+      "model": "protocolos.campus",
+      "pk": 2,
+      "fields": {
+        "nome": "Foz do Iguaçu"
+      }
+    },
+    {
+      "model": "protocolos.campus",
+      "pk": 3,
+      "fields": {
+        "nome": "Irati"
+      }
+    },
+    {
+      "model": "protocolos.campus",
+      "pk": 4,
+      "fields": {
+        "nome": "Ivaiporã"
+      }
+    },
+    {
+      "model": "protocolos.campus",
+      "pk": 5,
+      "fields": {
+        "nome": "Jacarezinho"
+      }
+    },
+    {
+      "model": "protocolos.campus",
+      "pk": 6,
+      "fields": {
+        "nome": "Jaguariaíva"
+      }
+    },
+    {
+      "model": "protocolos.campus",
+      "pk": 7,
+      "fields": {
+        "nome": "Pinhais"
+      }
+    },
+    {
+      "model": "protocolos.campus",
+      "pk": 8,
+      "fields": {
+        "nome": "Pitanga"
+      }
+    },
+    {
+      "model": "protocolos.campus",
+      "pk": 9,
+      "fields": {
+        "nome": "Telêmaco Borba"
+      }
+    },
+    {
+      "model": "protocolos.campus",
+      "pk": 10,
+      "fields": {
+        "nome": "Palmas"
+      }
+    },
+    {
+      "model": "protocolos.curso",
+      "pk": 1,
+      "fields": {
+        "nome": "Engenharia de Software",
+        "campus": 1
+      }
+    },
+    {
+      "model": "protocolos.curso",
+      "pk": 2,
+      "fields": {
+        "nome": "Engenharia Elétrica",
+        "campus": 1
+      }
+    },
+    {
+      "model": "protocolos.curso",
+      "pk": 3,
+      "fields": {
+        "nome": "Licenciatura em Química",
+        "campus": 1
+      }
+    },
+    {
+      "model": "protocolos.curso",
+      "pk": 4,
+      "fields": {
+        "nome": "Análise e Desenvolvimento de Sistemas",
+        "campus": 2
+      }
+    },
+    {
+      "model": "protocolos.curso",
+      "pk": 5,
+      "fields": {
+        "nome": "Engenharia de Aquicultura",
+        "campus": 2
+      }
+    },
+    {
+      "model": "protocolos.curso",
+      "pk": 6,
+      "fields": {
+        "nome": "Técnico em Informática",
+        "campus": 3
+      }
+    },
+    {
+      "model": "protocolos.curso",
+      "pk": 7,
+      "fields": {
+        "nome": "Técnico em Agroecologia",
+        "campus": 4
+      }
+    },
+    {
+      "model": "protocolos.curso",
+      "pk": 8,
+      "fields": {
+        "nome": "Técnico em Eletrotécnica",
+        "campus": 4
+      }
+    },
+    {
+      "model": "protocolos.curso",
+      "pk": 9,
+      "fields": {
+        "nome": "Técnico em Informática",
+        "campus": 4
+      }
+    },
+    {
+      "model": "protocolos.curso",
+      "pk": 10,
+      "fields": {
+        "nome": "Técnico em Alimentos",
+        "campus": 5
+      }
+    },
+    {
+      "model": "protocolos.curso",
+      "pk": 11,
+      "fields": {
+        "nome": "Técnico em Mecânica",
+        "campus": 5
+      }
+    },
+    {
+      "model": "protocolos.curso",
+      "pk": 12,
+      "fields": {
+        "nome": "Técnico em Informática",
+        "campus": 5
+      }
+    },
+    {
+      "model": "protocolos.curso",
+      "pk": 13,
+      "fields": {
+        "nome": "Técnico em Alimentos",
+        "campus": 6
+      }
+    },
+    {
+      "model": "protocolos.curso",
+      "pk": 14,
+      "fields": {
+        "nome": "Técnico em Biotecnologia",
+        "campus": 6
+      }
+    },
+    {
+      "model": "protocolos.curso",
+      "pk": 15,
+      "fields": {
+        "nome": "Técnico em Administração",
+        "campus": 7
+      }
+    },
+    {
+      "model": "protocolos.curso",
+      "pk": 16,
+      "fields": {
+        "nome": "Técnico em Informática",
+        "campus": 7
+      }
+    },
+    {
+      "model": "protocolos.curso",
+      "pk": 17,
+      "fields": {
+        "nome": "Técnico em Alimentos",
+        "campus": 8
+      }
+    },
+    {
+      "model": "protocolos.curso",
+      "pk": 18,
+      "fields": {
+        "nome": "Técnico em Cooperativismo",
+        "campus": 8
+      }
+    },
+    {
+      "model": "protocolos.curso",
+      "pk": 19,
+      "fields": {
+        "nome": "Técnico em Informática",
+        "campus": 9
+      }
+    },
+    {
+      "model": "protocolos.curso",
+      "pk": 20,
+      "fields": {
+        "nome": "Técnico em Mecânica",
+        "campus": 9
+      }
+    },
+    {
+      "model": "protocolos.curso",
+      "pk": 21,
+      "fields": {
+        "nome": "Técnico em Meio Ambiente",
+        "campus": 10
+      }
+    }
+]
+   
+  

@@ -21,7 +21,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
         
         <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
         
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
@@ -88,7 +88,7 @@
                             <li class="nav-item">
                                 <div class="btn-group mt-1">
                                     <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                      {{ request.user }}
+                                        <i class="bi bi-person-circle me-2"></i> {{ request.user }}
                                     </button>
                                     <ul class="dropdown-menu">
                                       <li><a class="dropdown-item" href="#">Outra coisa</a></li>
