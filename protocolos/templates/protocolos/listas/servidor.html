@@ -28,12 +28,12 @@
             <td>{{ object.usuario.email }}</td>
             <td>
                 <div class="dropdown">
-                    <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-outline-dark btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-gear"></i>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item link-primary" href="{% url "editar-servidor" object.pk %}">Editar</a></li>
-                        <li><a class="dropdown-item link-danger" href="{% url "excluir-servidor" object.pk %}">Excluir</a></li>
+                        <li><a class="dropdown-item link-primary" href="{% url "editar-servidor" object.pk %}"><i class="bi bi-pencil-square"></i> Editar</a></li>
+                        <li><a class="dropdown-item link-danger" href="{% url "excluir-servidor" object.pk %}"><i class="bi bi-trash"></i> Excluir</a></li>
                     </ul>
                 </div>
             </td>

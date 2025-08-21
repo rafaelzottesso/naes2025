@@ -2986,7 +2986,7 @@ textarea.form-control-lg {
   --bs-btn-disabled-border-color: #212529;
 }
 
-.btn-outline-primary {
+.btn-outline-dark {
   --bs-btn-color: #2530ab;
   --bs-btn-border-color: #2530ab;
   --bs-btn-hover-color: #fff;

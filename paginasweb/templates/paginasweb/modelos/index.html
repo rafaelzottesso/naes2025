@@ -71,17 +71,45 @@
                                     Administração
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{% url "listar-campus" %}">Campus</a></li>
-                                    <li><a class="dropdown-item" href="{% url "listar-curso" %}">Curso</a></li>
+
+                                    <li><a class="dropdown-item" href="{% url "listar-campus" %}">
+                                        <i class="bi bi-building"></i> Campus
+                                    </a></li>
+
+                                    <li><a class="dropdown-item" href="{% url "listar-curso" %}">
+                                        <i class="bi bi-mortarboard"></i> Curso
+                                    </a></li>
+
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="{% url "listar-status" %}">Status</a></li>
-                                    <li><a class="dropdown-item" href="{% url "listar-tipo-solicitacao" %}">Tipo de Solicitação</a></li>
+
+                                    <li><a class="dropdown-item" href="{% url "listar-status" %}">
+                                        <i class="bi bi-info-circle"></i> Status
+                                    </a></li>
+
+                                    <li><a class="dropdown-item" href="{% url "listar-tipo-solicitacao" %}">
+                                        <i class="bi bi-list"></i> Tipo de Solicitação
+                                    </a></li>
+
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="{% url "listar-solicitacao" %}">Solicitação</a></li>
-                                    <li><a class="dropdown-item" href="{% url "listar-historico" %}">Histórico</a></li>
+
+                                    <li><a class="dropdown-item" href="{% url "listar-solicitacao" %}">
+                                        <i class="bi bi-file-earmark-text"></i> Solicitação
+                                    </a></li>
+
+                                    <li><a class="dropdown-item" href="{% url "listar-historico" %}">
+                                        <i class="bi bi-clock-history"></i> Histórico
+                                    </a></li>
+
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="{% url "listar-aluno" %}">Aluno</a></li>
-                                    <li><a class="dropdown-item" href="{% url "listar-servidor" %}">Servidor</a></li>
+
+                                    <li><a class="dropdown-item" href="{% url "listar-aluno" %}">
+                                        <i class="bi bi-person-raised-hand"></i> Aluno
+                                    </a></li>
+
+                                    <li><a class="dropdown-item" href="{% url "listar-servidor" %}">
+                                        <i class="bi bi-person-workspace"></i> Servidor
+                                    </a></li>
+
                                 </ul>
                             </li>
 
