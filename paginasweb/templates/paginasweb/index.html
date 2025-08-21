@@ -24,8 +24,8 @@
         
         {% else %}
         
-        <a class="btn btn-success btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="{% url "cadastrar-solicitacao" %}">Entrar</a>
-        <a class="btn btn-outline-success btn-lg px-5 py-3 fs-6 fw-bolder" href="{% url "listar-solicitacao" %}">Registrar-se</a>
+        <a class="btn btn-success btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="{% url "login" %}">Entrar</a>
+        <a class="btn btn-outline-success btn-lg px-5 py-3 fs-6 fw-bolder" href="{% url "registrar" %}">Registrar-se</a>
 
         {% endif %}
 
@@ -62,4 +62,31 @@
     </div>
 
 </d>
+
+<div class="row mt-4">
+    <div class="col-lg">
+        <h2 class="text-gradient mb-4">Últimas solicitações</h2>
+
+        <ul class="list-group">
+            {% for solicitacao in ultimas %}
+            <li class="list-group-item">
+                {{solicitacao.tipo_solicitacao.descricao}}
+                -
+                {{solicitacao.solicitado_em|date:'d/m/Y'}}
+            </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+    <div class="col-lg">
+        <h2 class="text-gradient mb-4">Estatísticas do sistema</h2>
+        <ul>
+            <li>Solicitações criadas: {{ qtde }}</li>
+            <li>Alunos cadastrados: {{ qtde_alunos }}</li>
+            <li>Servidores cadastrados: {{ qtde_servidores }}</li>
+        </ul>
+    </div>
+</div>
+
+</p>
 {% endblock conteudo %}
