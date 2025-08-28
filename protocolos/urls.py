@@ -5,6 +5,8 @@ from .views import CampusCreate,CursoCreate,StatusCreate,TipoSolicitacaoCreate,S
 from .views import CampusUpdate, CursoUpdate, StatusUpdate, TipoSolicitacaoUpdate, ServidorUpdate, AlunoUpdate, SolicitacaoUpdate, HistoricoUpdate
 from .views import CampusDelete, CursoDelete, StatusDelete, TipoSolicitacaoDelete, ServidorDelete, AlunoDelete, SolicitacaoDelete, HistoricoDelete
 from .views import CampusList, CursoList, StatusList, TipoSolicitacaoList, ServidorList, AlunoList, SolicitacaoList, HistoricoList
+from .views import MinhaSolicitacaoList
+
 
 urlpatterns = [
 
@@ -47,6 +49,8 @@ urlpatterns = [
     path("listar/alunos/", AlunoList.as_view(), name="listar-aluno"),
     path("listar/solicitacoes/", SolicitacaoList.as_view(), name="listar-solicitacao"),
     path("listar/historicos/", HistoricoList.as_view(), name="listar-historico"),
+
+    path("listar/minhas-solicitacoes/", MinhaSolicitacaoList.as_view(), name="listar-minhas-solicitacoes"),
 
 
 ]

@@ -32,11 +32,11 @@ class Status(models.Model):
     pode_editar = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.nome
+        return f"{self.ordem} - {self.nome}"
 
     class Meta:
         verbose_name_plural = "Status"
-        ordering = ["nome"]
+        ordering = ["ordem"]
 
 
 class TipoSolicitacao(models.Model):
@@ -71,7 +71,7 @@ class Aluno(models.Model):
     telefone = models.CharField(max_length=20, null=True)
 
     def __str__(self):
-        return self.nome
+        return f"{self.nome} ({self.usuario})"
     
     class Meta:
         ordering = ["nome"]
@@ -101,7 +101,8 @@ class Solicitacao(models.Model):
     atualizado_em = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.tipo_solicitacao} - {self.solicitado_em}"
+
+        return f"{self.tipo_solicitacao} - Por: {self.solicitado_por.nome} em {self.solicitado_em:%d/%m/%Y %H:%M}"
 
     class Meta:
         verbose_name = "Solicitação"

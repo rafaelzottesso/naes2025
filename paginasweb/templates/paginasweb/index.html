@@ -19,7 +19,7 @@
         {% if request.user.is_authenticated %}
 
         <a class="btn btn-success btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="{% url "cadastrar-solicitacao" %}">Nova solicitação</a>
-        <a class="btn btn-outline-success btn-lg px-5 py-3 fs-6 fw-bolder" href="{% url "listar-solicitacao" %}">Minhas solicitações</a>
+        <a class="btn btn-outline-success btn-lg px-5 py-3 fs-6 fw-bolder" href="{% url "listar-minhas-solicitacoes" %}">Minhas solicitações</a>
 
         
         {% else %}

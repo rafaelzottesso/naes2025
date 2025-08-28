@@ -2,6 +2,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 
 from django.urls import reverse_lazy
+from django.shortcuts import get_object_or_404
+from django.http import Http404
 
 from .models import Campus, Curso, Status, TipoSolicitacao, Servidor, Aluno, Solicitacao, Historico
 
@@ -80,10 +82,10 @@ class SolicitacaoCreate(LoginRequiredMixin, CreateView):
     template_name = "protocolos/form.html"
     model = Solicitacao
     success_url = reverse_lazy("listar-solicitacao")
-    fields = [ "curso", "turma", "tipo_solicitacao", "justificativa", "anexo"]
+    fields = ["curso", "turma", "tipo_solicitacao", "justificativa", "anexo"]
     extra_context = {
         "titulo": "Cadastro de Solicitação"
-    }
+    } 
 
     def form_valid(self, form):    
         
@@ -135,10 +137,16 @@ class HistoricoCreate(LoginRequiredMixin, CreateView):
     template_name = "protocolos/form.html"
     model = Historico
     success_url = reverse_lazy("listar-historico")
-    fields = ["solicitacao", "status", "gerado_por"]
+    fields = ["solicitacao", "status"]
     extra_context = {
-        "titulo": "Cadastro de Histórico"
+        "titulo": "Movimentação de Solicitação",
+        "botao" : "Movimentar Solicitação"
     }
+
+    # Identifica o usuário logado e atribui ao campo "gerado_por"
+    def form_valid(self, form):
+        form.instance.gerado_por = self.request.user
+        return super().form_valid(form)
 
 
 ###############################################################
@@ -214,10 +222,29 @@ class SolicitacaoUpdate(LoginRequiredMixin, UpdateView):
     template_name = "protocolos/form.html"
     model = Solicitacao
     success_url = reverse_lazy("listar-solicitacao")
-    fields = ["solicitado_por", "curso", "turma", "tipo_solicitacao", "justificativa", "anexo"]
+    fields = ["curso", "turma", "tipo_solicitacao", "justificativa", "anexo"]
     extra_context = {
         "titulo": "Atualização de Solicitação"
     }
+
+    # Personaliza a busca do objeto que será editado
+    def get_object(self):
+
+        # Busca o último histórico da solicitação
+        historico = Historico.objects.filter(
+            solicitacao__pk=self.kwargs["pk"]).order_by("-id").first()
+
+        # Se o status da solicitação não permite edição, não deixa editar
+        if(not historico.status.pode_editar):
+            # Força um erro 404 (não encontrado)
+            raise Http404("Essa solicitação não pode ser editada!")
+
+        # Se o usuário pertence ao grupo "Admin" pode buscar só pelo ID
+        if(self.request.user.groups.filter(name="Admin").exists()):
+            return get_object_or_404(Solicitacao, pk=self.kwargs["pk"])
+        # Senão, só pode buscar se for o dono da solicitação
+        else:
+            return get_object_or_404(Solicitacao, pk=self.kwargs["pk"], solicitado_por=self.request.user.aluno)
 
 
 class HistoricoUpdate(LoginRequiredMixin, UpdateView):
@@ -267,6 +294,9 @@ class TipoSolicitacaoDelete(LoginRequiredMixin, DeleteView):
     extra_context = {
         "titulo" : "Excluir Tipo de Solicitação",
     }
+
+    def get_object(self):
+        return get_object_or_404(Solicitacao, pk=self.kwargs["pk"], solicitado_por=self.request.user.aluno)
 
 
 class ServidorDelete(LoginRequiredMixin, DeleteView):
@@ -343,6 +373,15 @@ class AlunoList(LoginRequiredMixin, ListView):
 class SolicitacaoList(LoginRequiredMixin, ListView):
     template_name = "protocolos/listas/solicitacao.html"
     model = Solicitacao
+
+
+class MinhaSolicitacaoList(LoginRequiredMixin, ListView):
+    template_name = "protocolos/listas/solicitacao.html"
+    model = Solicitacao
+
+    def get_queryset(self):
+        qs = Solicitacao.objects.filter(solicitado_por=self.request.user.aluno)
+        return qs
 
 
 class HistoricoList(LoginRequiredMixin, ListView):
