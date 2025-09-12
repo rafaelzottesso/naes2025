@@ -16,8 +16,9 @@ class PaginaInicial(TemplateView):
         context = super().get_context_data(**kwargs)
         # Enviando uma str básica
         context["nome"] = "Rafael Zottesso"
-        # Enviar uma lista de objetos
-        context["ultimas"] = Solicitacao.objects.all().order_by('-solicitado_em')[:5]
+        # Enviar uma lista de objetos para o template
+        # 
+        context["ultimas"] = Solicitacao.objects.all().select_related("tipo_solicitacao").order_by('-solicitado_em')[:5]
         context["qtde"] = Solicitacao.objects.all().count()
         context["qtde_alunos"] = Aluno.objects.all().count()
         context["qtde_servidores"] = Servidor.objects.all().count()

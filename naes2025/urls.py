@@ -17,6 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# Importar as urls do debug toolbar
+from debug_toolbar.toolbar import debug_toolbar_urls
+
 urlpatterns = [
     
     path("admin/", admin.site.urls),
@@ -26,4 +29,4 @@ urlpatterns = [
     path("protocolo/", include("protocolos.urls")),
     path("", include("usuario.urls")),
 
-]
+] + debug_toolbar_urls() # Adicionar as urls do debug toolbar

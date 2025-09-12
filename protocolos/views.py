@@ -87,7 +87,25 @@ class SolicitacaoCreate(LoginRequiredMixin, CreateView):
         "titulo": "Cadastro de Solicitação"
     } 
 
+    # Manipular os dados que serão utilizardos para montar o formulário
+    # Isso deve ser feito no Create e no Update também
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        # Fazer um select_related no curso porque ele exibe o campus no __str__ (toString dele)
+        qs = Curso.objects.all().select_related("campus")
+        # Poderíamos filtrar os cursos pelo campus do aluno logado
+        # if(self.request.user.aluno.campus):
+        #     qs = qs.filter(campus=self.request.user.aluno.campus)
+        form.fields["curso"].queryset = qs
+        return form
+
+    # Método que é executado quando o formulário é válido e vai ser salvo no banco
     def form_valid(self, form):    
+
+        # Verifica se o usuário é um aluno
+        if(not hasattr(self.request.user, "aluno")):
+            form.add_error("", "Apenas alunos podem fazer solicitações!")
+            return self.form_invalid(form)
         
         # Define o usuário logado no "campo do form" (como atributo)
         form.instance.solicitado_por = self.request.user.aluno
@@ -227,6 +245,13 @@ class SolicitacaoUpdate(LoginRequiredMixin, UpdateView):
         "titulo": "Atualização de Solicitação"
     }
 
+    # Manipular os dados que serão utilizardos para montar o formulário
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        # Fazer um select_related no curso porque ele exibe o campus no __str__ (toString dele)
+        form.fields["curso"].queryset = Curso.objects.all().select_related("campus")
+        return form
+
     # Personaliza a busca do objeto que será editado
     def get_object(self):
 
@@ -348,6 +373,11 @@ class CursoList(LoginRequiredMixin, ListView):
     model = Curso
     ordering = ["campus", "nome"]
 
+    # Alterar o método de consulta (queryset) para fazer o select related (join no SQL)
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.select_related("campus")
+
 
 class StatusList(LoginRequiredMixin, ListView):
     template_name = "protocolos/listas/status.html"
@@ -364,26 +394,47 @@ class ServidorList(LoginRequiredMixin, ListView):
     template_name = "protocolos/listas/servidor.html"
     model = Servidor
 
+    # Alterar o método de consulta (queryset) para fazer o select related (join no SQL)
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.select_related("usuario")
+
 
 class AlunoList(LoginRequiredMixin, ListView):
     template_name = "protocolos/listas/aluno.html"
     model = Aluno
+
+    # Alterar o método de consulta (queryset) para fazer o select related (join no SQL)
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.select_related("usuario")
 
 
 class SolicitacaoList(LoginRequiredMixin, ListView):
     template_name = "protocolos/listas/solicitacao.html"
     model = Solicitacao
 
+    # Alterar o método de consulta (queryset) para fazer o select related (join no SQL)
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.select_related("solicitado_por", "curso", "tipo_solicitacao")
+
 
 class MinhaSolicitacaoList(LoginRequiredMixin, ListView):
     template_name = "protocolos/listas/solicitacao.html"
     model = Solicitacao
 
+    # Alterar o método de consulta (queryset) para fazer o select related (join no SQL)
     def get_queryset(self):
-        qs = Solicitacao.objects.filter(solicitado_por=self.request.user.aluno)
-        return qs
+        qs = super().get_queryset().filter(solicitado_por=self.request.user.aluno)
+        return qs.select_related("solicitado_por", "curso", "tipo_solicitacao")
 
 
 class HistoricoList(LoginRequiredMixin, ListView):
     template_name = "protocolos/listas/historico.html"
     model = Historico
+
+    # Alterar o método de consulta (queryset) para fazer o select related (join no SQL)
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.select_related("solicitacao", "status", "gerado_por", "solicitacao__tipo_solicitacao")

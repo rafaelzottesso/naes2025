@@ -71,7 +71,7 @@ class Aluno(models.Model):
     telefone = models.CharField(max_length=20, null=True)
 
     def __str__(self):
-        return f"{self.nome} ({self.usuario})"
+        return f"{self.nome} ({self.matricula})"
     
     class Meta:
         ordering = ["nome"]
@@ -83,7 +83,7 @@ class Servidor(models.Model):
     siape = models.CharField(max_length=50, unique=True)
 
     def __str__(self):
-        return self.nome
+        return f"{self.nome} ({self.siape})"
     
     class Meta:
         ordering = ["nome"]
@@ -101,7 +101,6 @@ class Solicitacao(models.Model):
     atualizado_em = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-
         return f"{self.tipo_solicitacao} - Por: {self.solicitado_por.nome} em {self.solicitado_em:%d/%m/%Y %H:%M}"
 
     class Meta:
