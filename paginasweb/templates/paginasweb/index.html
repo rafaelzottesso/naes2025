@@ -38,10 +38,10 @@
 
 {% block conteudo %}
 
-<d class="row">
-
+<!-- Seção informativa -->
+<div class="row align-items-center mb-5">
     <div class="col-lg-6">
-        <div class="text-center my-3">
+        <div class="text-start my-3">
             <h2 class="display-5 fw-bolder"><span class="text-gradient d-inline">O que é?</span></h2>
             <p class="lead fw-light mb-4">Para que serve o Protocolo Online?</p>
             <p class="text-muted">
@@ -51,42 +51,218 @@
                  para a emissão de resultados. Os resultados serão enviados ao requerente por e-mail, 
                  dentro do prazo previsto para cada solicitação.
             </p>
-            <div class="d-flex justify-content-center fs-2 gap-4">
-                
-            </div>
         </div>
     </div>
 
     <div class="col-lg-6 text-center">
-        <img src="{% static 'img/protocolo.png' %}" class="img-fluid" style="max-width: 250px" alt="">
-    </div>
-
-</d>
-
-<div class="row mt-4">
-    <div class="col-lg">
-        <h2 class="text-gradient mb-4">Últimas solicitações</h2>
-
-        <ul class="list-group">
-            {% for solicitacao in ultimas %}
-            <li class="list-group-item">
-                {{solicitacao.tipo_solicitacao.descricao}}
-                -
-                {{solicitacao.solicitado_em|date:'d/m/Y'}}
-            </li>
-            {% endfor %}
-        </ul>
-
-    </div>
-    <div class="col-lg">
-        <h2 class="text-gradient mb-4">Estatísticas do sistema</h2>
-        <ul>
-            <li>Solicitações criadas: {{ qtde }}</li>
-            <li>Alunos cadastrados: {{ qtde_alunos }}</li>
-            <li>Servidores cadastrados: {{ qtde_servidores }}</li>
-        </ul>
+        <img src="{% static 'img/protocolo.png' %}" class="img-fluid" style="max-width: 250px" alt="Protocolo Online">
     </div>
 </div>
 
-</p>
+<!-- Seção de Estatísticas -->
+<div class="row mb-5">
+    <div class="col-12">
+        <h2 class="text-center fw-bolder mb-4">
+            <span class="text-gradient">Estatísticas do Sistema</span>
+        </h2>
+    </div>
+</div>
+
+<div class="row g-4 mb-5">
+    <!-- Card Total de Solicitações -->
+    <div class="col-sm-6 col-lg-3">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body text-center">
+                <div class="text-success fs-1 mb-3">
+                    <i class="bi bi-file-earmark-text"></i>
+                </div>
+                <h3 class="fw-bold text-success mb-2">{{ qtde }}</h3>
+                <p class="text-muted mb-0">Total de Solicitações</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card Solicitações do Mês -->
+    <div class="col-sm-6 col-lg-3">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body text-center">
+                <div class="text-primary fs-1 mb-3">
+                    <i class="bi bi-calendar-month"></i>
+                </div>
+                <h3 class="fw-bold text-primary mb-2">{{ qtde_mes }}</h3>
+                <p class="text-muted mb-0">Últimos 30 dias</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card Alunos Cadastrados -->
+    <div class="col-sm-6 col-lg-3">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body text-center">
+                <div class="text-warning fs-1 mb-3">
+                    <i class="bi bi-person-raised-hand"></i>
+                </div>
+                <h3 class="fw-bold text-warning mb-2">{{ qtde_alunos }}</h3>
+                <p class="text-muted mb-0">Alunos Cadastrados</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card Servidores Cadastrados -->
+    <div class="col-sm-6 col-lg-3">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body text-center">
+                <div class="text-info fs-1 mb-3">
+                    <i class="bi bi-person-workspace"></i>
+                </div>
+                <h3 class="fw-bold text-info mb-2">{{ qtde_servidores }}</h3>
+                <p class="text-muted mb-0">Servidores Cadastrados</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Seção Principal com Últimas Solicitações e Tipos Mais Comuns -->
+<div class="row g-4">
+    <!-- Últimas Solicitações -->
+    <div class="col-lg-8">
+        <div class="card border-0 shadow-sm h-100 p-3">
+            <div class="card-header bg-transparent border-bottom-0">
+                <h4 class="fw-bold mb-0">
+                    <i class="bi bi-clock-history text-success me-2"></i>
+                    Últimas Solicitações
+                </h4>
+            </div>
+            <div class="card-body">
+                {% if ultimas %}
+                    <div class="list-group list-group-flush">
+                        {% for solicitacao in ultimas %}
+                        <div class="list-group-item border-0 px-0">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1 fw-semibold">{{ solicitacao.tipo_solicitacao.descricao }}</h6>
+                                    <p class="mb-1 text-muted small">
+                                        <i class="bi bi-person me-1"></i>
+                                        {{ solicitacao.solicitado_por.nome }}
+                                    </p>
+                                    <p class="mb-0 text-muted small">
+                                        <i class="bi bi-mortarboard me-1"></i>
+                                        {{ solicitacao.curso }}
+                                    </p>
+                                </div>
+                                <small class="text-muted">
+                                    <i class="bi bi-calendar3 me-1"></i>
+                                    {{ solicitacao.solicitado_em|date:'d/m/Y' }}
+                                </small>
+                            </div>
+                        </div>
+                        {% if not forloop.last %}
+                        <hr class="my-2">
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="text-center py-4">
+                        <i class="bi bi-inbox fs-1 text-muted mb-3"></i>
+                        <p class="text-muted">Nenhuma solicitação encontrada</p>
+                    </div>
+                {% endif %}
+            </div>
+            {% if request.user.is_authenticated %}
+            <div class="card-footer bg-transparent border-top-0">
+                <div class="d-grid">
+                    <a href="{% url 'listar-minhas-solicitacoes' %}" class="btn btn-outline-success">
+                        Ver todas as minhas solicitações
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Tipos Mais Comuns e Status -->
+    <div class="col-lg-4">
+        <!-- Tipos Mais Comuns -->
+        <div class="card border-0 shadow-sm mb-4 pt-2">
+            <div class="card-header bg-transparent border-bottom-0">
+                <h5 class="fw-bold mb-0">
+                    <i class="bi bi-graph-up-arrow text-primary me-2"></i>
+                    Tipos Mais Solicitados
+                </h5>
+            </div>
+            <div class="card-body">
+                {% if tipos_mais_comuns %}
+                    {% for tipo in tipos_mais_comuns %}
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="flex-grow-1">
+                            <h6 class="mb-0 small fw-semibold">{{ tipo.descricao|truncatechars:30 }}</h6>
+                        </div>
+                        <span class="badge bg-primary rounded-pill">{{ tipo.qtde_solicitacoes }}</span>
+                    </div>
+                    {% if not forloop.last %}
+                    <hr class="my-2">
+                    {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <p class="text-muted text-center">Nenhum dado disponível</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Status das Solicitações -->
+        {% if solicitacoes_por_status %}
+        <div class="card border-0 shadow-sm pt-2">
+            <div class="card-header bg-transparent border-bottom-0">
+                <h5 class="fw-bold mb-0">
+                    <i class="bi bi-pie-chart text-warning me-2"></i>
+                    Status das Solicitações
+                </h5>
+            </div>
+            <div class="card-body">
+                {% for status in solicitacoes_por_status %}
+                {% if status.qtde > 0 %}
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="flex-grow-1">
+                        <h6 class="mb-0 small fw-semibold">{{ status.nome }}</h6>
+                    </div>
+                    <span class="badge bg-warning rounded-pill">{{ status.qtde }}</span>
+                </div>
+                <!-- SE não for o último -->
+                {% if not forloop.last %}
+                <hr class="mt-1 mb-3">
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Call to Action -->
+{% if not request.user.is_authenticated %}
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="card border-0 bg-light">
+            <div class="card-body text-center py-5">
+                <h3 class="fw-bold mb-3">Pronto para fazer sua primeira solicitação?</h3>
+                <p class="lead text-muted mb-4">
+                    Faça login ou registre-se para acessar o sistema de protocolo online
+                </p>
+                <div class="d-gap-3 d-sm-flex justify-content-center">
+                    <a href="{% url 'login' %}" class="btn btn-success btn-lg px-4 me-sm-3 mb-2 mb-sm-0">
+                        <i class="bi bi-box-arrow-in-right me-2"></i>
+                        Fazer Login
+                    </a>
+                    <a href="{% url 'registrar' %}" class="btn btn-outline-success btn-lg px-4">
+                        <i class="bi bi-person-plus me-2"></i>
+                        Registrar-se
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
 {% endblock conteudo %}
