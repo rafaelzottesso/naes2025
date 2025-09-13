@@ -62,7 +62,7 @@ class ServidorCreate(LoginRequiredMixin, CreateView):
     template_name = "protocolos/form.html"
     model = Servidor
     success_url = reverse_lazy("listar-servidor")
-    fields = ["nome", "siape"]
+    fields = ["nome", "siape", "campus"]
     extra_context = {
         "titulo": "Cadastro de Servidor"
     }
@@ -72,7 +72,7 @@ class AlunoCreate(LoginRequiredMixin, CreateView):
     template_name = "protocolos/form.html"
     model = Aluno
     success_url = reverse_lazy("listar-aluno")
-    fields = ["nome", "matricula", "cpf", "telefone"]
+    fields = ["nome", "matricula", "campus", "cpf", "telefone"]
     extra_context = {
         "titulo": "Cadastro de Aluno"
     }
@@ -93,9 +93,12 @@ class SolicitacaoCreate(LoginRequiredMixin, CreateView):
         form = super().get_form(form_class)
         # Fazer um select_related no curso porque ele exibe o campus no __str__ (toString dele)
         qs = Curso.objects.all().select_related("campus")
-        # Poderíamos filtrar os cursos pelo campus do aluno logado
-        # if(self.request.user.aluno.campus):
-        #     qs = qs.filter(campus=self.request.user.aluno.campus)
+        # Poderíamos filtrar os cursos pelo campus do usuário logado
+        # Verifica se o User é aluno ou servidor e busca seu campus
+        if(hasattr(self.request.user, "aluno")):
+            qs = qs.filter(campus=self.request.user.aluno.campus)
+        elif(hasattr(self.request.user, "servidor")):
+            qs = qs.filter(campus=self.request.user.servidor.campus)
         form.fields["curso"].queryset = qs
         return form
 
@@ -220,7 +223,7 @@ class ServidorUpdate(LoginRequiredMixin, UpdateView):
     template_name = "protocolos/form.html"
     model = Servidor
     success_url = reverse_lazy("listar-servidor")
-    fields = ["nome", "siape"]
+    fields = ["nome", "siape", "campus"]
     extra_context = {
         "titulo": "Atualização de Servidor"
     }
@@ -230,7 +233,7 @@ class AlunoUpdate(LoginRequiredMixin, UpdateView):
     template_name = "protocolos/form.html"
     model = Aluno
     success_url = reverse_lazy("listar-aluno")
-    fields = ["nome", "matricula", "cpf", "telefone"]
+    fields = ["nome", "matricula", "campus", "cpf", "telefone"]
     extra_context = {
         "titulo": "Atualização de Aluno"
     }

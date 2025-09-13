@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from protocolos.models import Aluno, Servidor
+from protocolos.models import Aluno, Servidor, Campus
 from django import forms
 
 
@@ -15,9 +15,13 @@ class UsuarioCadastroForm(UserCreationForm):
     ]
 
     nome = forms.CharField(required=True, max_length=255)
+    cpf = forms.CharField(required=True, max_length=14, label="CPF")
+
     identificacao = forms.CharField(required=True, max_length=50, label="Identificação",
         help_text="Informe a matrícula para Estudante ou SIAPE para Servidor.")
-    cpf = forms.CharField(required=True, max_length=14, label="CPF")
+    
+    campus = forms.ModelChoiceField(queryset=Campus.objects.all(), required=True, label="Campus",
+        help_text="Selecione o campus ao qual você está vinculado.")
 
     tipo_usuario = forms.ChoiceField(choices=TIPOS, label="Tipo de usuário")
 
@@ -27,7 +31,7 @@ class UsuarioCadastroForm(UserCreationForm):
     class Meta:
         model = User
         # Esses dois passwords são para verificar se as senhas são iguais
-        fields = [ 'nome', 'tipo_usuario', 'identificacao',
+        fields = [ 'nome', 'tipo_usuario', 'identificacao', 'campus',
                     'cpf', 'username', 'email',
                     'password1', 'password2' ]
 
