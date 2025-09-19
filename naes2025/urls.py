@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 # Importar as urls do debug toolbar
-from debug_toolbar.toolbar import debug_toolbar_urls
+import debug_toolbar
 
 urlpatterns = [
     
@@ -29,4 +29,7 @@ urlpatterns = [
     path("protocolo/", include("protocolos.urls")),
     path("", include("usuario.urls")),
 
-] + debug_toolbar_urls() # Adicionar as urls do debug toolbar
+    # Importa as urls do debug toolbar
+    path('__debug__/', include(debug_toolbar.urls)),
+
+]
