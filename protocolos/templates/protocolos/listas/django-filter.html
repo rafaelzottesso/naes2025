@@ -1,0 +1,37 @@
+{% load crispy_forms_tags %}
+
+
+<style>
+/* Ajuste para o app Django-Filter exibir os campos inline e não um embaixo do outro */
+form.row div[id*="div_id"] {
+    flex: 0 0 auto;
+    width: auto;
+}    
+</style>
+
+
+<h4>Filtros</h4>
+
+
+<form class="row gy-2 gx-3 justify-content-center mt-4 pb-3" action="" method="get">
+
+
+    {{ filter.form|crispy }}
+
+
+    <div class="col-auto">
+        <label for="" class="form-label d-block">&nbsp;</label>
+        <button type="submit" class="btn btn-secondary" id="btnSubmit">
+            <i class="bi bi-search"></i>
+            Filtrar
+        </button>
+        <a href="#" class="btn btn-outline-dark" id="btnLimpar">
+            <i class="bi bi-x-lg"></i>
+            Limpar
+        </a>
+    </div>
+</form>
+<script>
+ // Definir o link do botão limpar com a URL "pura"
+ document.getElementById('btnLimpar').href = window.location.pathname;
+</script>

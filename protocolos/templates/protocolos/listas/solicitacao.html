@@ -14,6 +14,22 @@
 {% endblock header %}
 {% block conteudo %}
 <div>
+
+    <!-- fazer um form para um filtro com os campos "termo_busca" e data -->
+    <form method="get" class="row g-3 mb-3">
+        <div class="col-md-4">
+            <input type="text" name="termo_busca" class="form-control" placeholder="Buscar..." value="{{ request.GET.termo_busca }}">
+        </div>
+        <!-- input date para solicitado_em -->
+        <div class="col-md-4">
+            <input type="date" name="data_solicitacao" class="form-control" placeholder="Data da Solicitação" value="{{ request.GET.data_solicitacao }}">
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+            <a href="{% url "listar-solicitacao" %}" class="btn btn-secondary">Limpar</a>
+        </div>
+    </form>
+
     <table class="table table-striped">
         <tr>
             <th>Solicitado por</th>

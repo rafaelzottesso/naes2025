@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     "debug_toolbar", # Incluir o debug toolbar
+    "django_filters",
 
 ]
 

@@ -10,6 +10,9 @@ from .models import Campus, Curso, Status, TipoSolicitacao, Servidor, Aluno, Sol
 # View para controle de autenticação e acesso às páginas
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+# Importação das coisas do Django Filter
+from django_filters.views import FilterView # usada no lugar da ListView
+from .filters import HistoricoFilter, HistoricoFilter2 # O filtro criado no filters.py
 
 # Create your views here.
 class CampusCreate(LoginRequiredMixin, CreateView):
@@ -412,7 +415,6 @@ class AlunoList(LoginRequiredMixin, ListView):
         qs = super().get_queryset()
         return qs.select_related("usuario")
 
-
 class SolicitacaoList(LoginRequiredMixin, ListView):
     template_name = "protocolos/listas/solicitacao.html"
     model = Solicitacao
@@ -420,6 +422,31 @@ class SolicitacaoList(LoginRequiredMixin, ListView):
     # Alterar o método de consulta (queryset) para fazer o select related (join no SQL)
     def get_queryset(self):
         qs = super().get_queryset()
+
+        # Recebe o valor vindo por GET pelo "name" do input/select
+        termo_busca = self.request.GET.get("termo_busca")
+
+        # import o Q para fazer buscas com "ou" (OR)
+        from django.db.models import Q
+
+        # Se existir algum dado lá
+        if(termo_busca):
+            qs = qs.filter(
+                Q(solicitado_por__nome__icontains=termo_busca) |
+                Q(curso__nome__icontains=termo_busca) |
+                Q(tipo_solicitacao__descricao__icontains=termo_busca) |
+                Q(curso__campus__nome__icontains=termo_busca)
+            )
+
+        # Recebe a data do form de filtro
+        data_solicitacao = self.request.GET.get("data_solicitacao")
+        if(data_solicitacao):
+            # __lte significa menor que ou igual a
+            # __gte >=
+            # __date verifica só a data, sem hora, minuto ou segundo
+            qs = qs.filter(solicitado_em__lte=data_solicitacao)
+
+            
         return qs.select_related("solicitado_por", "curso", "tipo_solicitacao")
 
 
@@ -433,9 +460,10 @@ class MinhaSolicitacaoList(LoginRequiredMixin, ListView):
         return qs.select_related("solicitado_por", "curso", "tipo_solicitacao")
 
 
-class HistoricoList(LoginRequiredMixin, ListView):
+class HistoricoList(LoginRequiredMixin, FilterView):
     template_name = "protocolos/listas/historico.html"
     model = Historico
+    filterset_class = HistoricoFilter2
 
     # Alterar o método de consulta (queryset) para fazer o select related (join no SQL)
     def get_queryset(self):
